@@ -67,7 +67,7 @@ export default function App() {
           <div className="flex items-center gap-2.5">
             <span className="text-xl">🏋️</span>
             <div>
-              <p className="text-white font-bold text-base leading-tight">GymTrack</p>
+              <p className="text-white font-bold text-base leading-tight">Hanuman Gym</p>
               <p className="text-gray-500 text-xs">Membership Manager</p>
             </div>
           </div>
@@ -92,7 +92,7 @@ export default function App() {
         </nav>
 
         <div className="px-5 py-4 border-t border-white/5">
-          <p className="text-gray-600 text-xs">v1.0 · GymTrack</p>
+          <p className="text-gray-600 text-xs">v1.0 · Hanuman Gym</p>
         </div>
       </aside>
 
@@ -104,7 +104,7 @@ export default function App() {
           <div className="flex items-center gap-2.5">
             <span className="text-xl">🏋️</span>
             <div>
-              <p className="font-bold text-base leading-tight">GymTrack</p>
+              <p className="font-bold text-base leading-tight">Hanuman Gym</p>
               <p className="text-gray-400 text-xs">Membership Manager</p>
             </div>
           </div>

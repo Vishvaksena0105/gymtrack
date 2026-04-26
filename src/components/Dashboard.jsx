@@ -13,7 +13,7 @@ async function exportCSV() {
     return [m.name, m.phone, m.location || '', m.slot, m.join_date, m.plan_duration, m.expiry_date, m.amount_paid ?? '', label]
   })
   const csv = [headers, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n')
-  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([csv], { type: 'text/csv' })), download: `gymtrack-${todayStr()}.csv` })
+  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([csv], { type: 'text/csv' })), download: `hanuman-gym-${todayStr()}.csv` })
   a.click()
 }
 

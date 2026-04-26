@@ -31,7 +31,7 @@ const STATUS = {
   },
 }
 
-export default function MemberCard({ member, onRenew, showStatus = true }) {
+export default function MemberCard({ member, onRenew, onRemove, showStatus = true }) {
   const { status, overdueDays, daysLeft } = getMemberStatus(member.expiry_date)
   const cfg = STATUS[status]
   const initials = member.name.trim().split(/\s+/).map(n => n[0]).join('').slice(0, 2).toUpperCase()
@@ -70,15 +70,29 @@ export default function MemberCard({ member, onRenew, showStatus = true }) {
         </div>
       </div>
 
-      {/* Action */}
-      {onRenew && (
-        <button
-          onClick={() => onRenew(member)}
-          className={`flex-shrink-0 text-xs font-semibold px-3 py-2 rounded-xl transition-colors ${cfg.renew}`}
-        >
-          Renew
-        </button>
-      )}
+      {/* Actions */}
+      <div className="flex items-center gap-2 flex-shrink-0">
+        {onRenew && (
+          <button
+            onClick={() => onRenew(member)}
+            className={`text-xs font-semibold px-3 py-2 rounded-xl transition-colors ${cfg.renew}`}
+          >
+            Renew
+          </button>
+        )}
+        {onRemove && (
+          <button
+            onClick={() => {
+              if (window.confirm(`Remove ${member.name}? This cannot be undone.`)) {
+                onRemove(member.id)
+              }
+            }}
+            className="text-xs font-semibold px-3 py-2 rounded-xl bg-white border border-red-200 text-red-500 hover:bg-red-50 transition-colors"
+          >
+            Remove
+          </button>
+        )}
+      </div>
     </div>
   )
 }

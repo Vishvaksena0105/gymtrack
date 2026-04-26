@@ -31,6 +31,11 @@ export default function AllMembers({ onRenew, refreshKey }) {
     setLoading(false)
   }
 
+  async function handleRemove(id) {
+    const { error } = await supabase.from('members').delete().eq('id', id)
+    if (!error) setMembers(prev => prev.filter(m => m.id !== id))
+  }
+
   let filtered = members
 
   if (slotFilter !== 'All') {
@@ -125,7 +130,7 @@ export default function AllMembers({ onRenew, refreshKey }) {
       ) : (
         <div className="space-y-2">
           {filtered.map(m => (
-            <MemberCard key={m.id} member={m} onRenew={onRenew} showStatus />
+            <MemberCard key={m.id} member={m} onRenew={onRenew} onRemove={handleRemove} showStatus />
           ))}
         </div>
       )}
